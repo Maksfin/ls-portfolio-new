@@ -11,34 +11,33 @@ html(lang="en")
     .wrapper
       .maincontent
         .welcome-section
-          section.parallax
+          header.header
+            .header__logo
+              a.logo(href="") ВА
+            .header__menu
+              nav.menu
+                ul.menu__list
+                  - var menuLinks = ['Главная', "Обо мне", "Навыки", "Работы", "Отзывы", "Связаться"];
+                  each item in menuLinks 
+                    li.menu__item
+                      a(href="#").menu__link #{item}
+            ul.socials.header__socials
+                - var socials = ['insta', 'vk', 'github'];
+                each item in socials
+                  li.socials__item
+                    a(href="#").socials__link
+                      +icon(item, 'socials__icon')
+          .parallax
             - for (var i = 1; i <= 7; i++)
               .parallax__layer
                 picture
                   source(srcset=require(`images/parallax/${i}_2560.${i === 1 ? 'jpg' : 'png'}`) media="(min-width: 1920px)").parallax__image
                   img(srcset=require(`images/parallax/${i}.${i === 1 ? 'jpg' : 'png'}`)).parallax__image
+
           section.fullscreen-section.hero
             .container.hero__container
-              header.header
-                .header__logo
-                  a.logo(href="") ВА
-                .header__menu 
-                  nav.menu
-                    ul.menu__list
-                      - var menuLinks = ['Главная', "Обо мне", "Навыки", "Работы", "Отзывы", "Связаться"];
-                      each item in menuLinks 
-                        li.menu__item
-                          a(href="#").menu__link #{item}
-                .header__buttons
-                  ul.socials
-                    - var socials = ['insta', 'vk', 'github'];
-                    each item in socials
-                      li.socials__item
-                        a(href="#").socials__link
-                          +icon(item, 'socials__icon')
-
               .hero__content
-                .userinfo
+                h1.userinfo
                   .userinfo__title Личный сайт #[span.userinfo__occ веб разработчика]
                   .userinfo__name Владимир Астаханов
               .hero__downbutton
@@ -85,14 +84,14 @@ html(lang="en")
               .values__wrapper
                 .values__title
                   .values__title-container
-                    .values__title-text Чем я могу быть полезен вам
+                    h2.values__title-text Чем я могу быть полезен вам
                     .values__content
                       p Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
                 .values__widget
                   #skills-component
           section.works
             .container.works__container
-              .section-title.works__section-title Мои работы
+              h2.section-title.works__section-title Мои работы
               .works__content
                 #works-slider-component
 
@@ -107,7 +106,7 @@ html(lang="en")
               #reviews-component
             .contacts__form
               .form
-                .section-title.contacts__form-title Связаться со мной
+                h2.section-title.contacts__form-title Связаться со мной
                 form.form__elem
                   .form__row
                     - 
